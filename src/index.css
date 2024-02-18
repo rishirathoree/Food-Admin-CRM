@@ -1,0 +1,26 @@
+
+@import "keep-react/css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{font-family: 'Poppins', sans-serif;}
+
+.ott{
+    outline-width: 2px;
+    outline-color: rgba(0, 0, 255, 0.12);
+}
+
+::-webkit-scrollbar {
+    width: 6px; /* WebKit */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #808080; /* WebKit thumb color */
+    border-radius: 10px; /* Optional: round thumb corners */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* WebKit track color */
+  }
