@@ -1,14 +1,12 @@
 import React from 'react'
 import FoodsTable from './SubComps/FoodsTable'
-import CreateFoodModal from './SubComps/CreateFoodModal'
+import FoodTop from './SubComps/FoodTop'
 
 const Foods = () => {
     return (
         <>
-        <div>
+        <FoodTop />
         <FoodsTable />
-        </div>
-        <CreateFoodModal />
         </>
   )
 }

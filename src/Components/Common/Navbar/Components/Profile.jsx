@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-// import profile from '../../../../assets/images/profile.avif'
+import logo from '../../../../assets/lofo.png'
 import {User,SignOut,Gear,Storefront} from 'phosphor-react'
 // import SignoutModal from './SignoutModal'
 import { Link } from 'react-router-dom'
+import SignOutModal from './SignOutModal'
 const Profile = () => {
 
     const [show,setShow] = useState(false)
@@ -29,8 +30,7 @@ const Profile = () => {
     <div>
       <div className='relative'>
         <div ref={imageRef} onClick={()=>{setShow(p=>!p)}} className='w-max p-1 gap-2 cursor-pointer items-center flex min overflow-hidden rounded-md ring-1 ring-black/5 text-[12px] text-white font-semibold capitalize tracking-tighter'>
-            <span className='w-8 h-8 block bg-gray-50 rounded-lg'></span>
-            {/* <img src={profile} className='object-cover w-8 h-8 rounded-md' alt="" /> */}
+            <img src={logo} className='object-cover w-8 h-8 rounded-md' alt="" />
             <p className='font-medium select-none text-black text-[10px]'>Rishi Rathore</p>
         </div>
         <div ref={boxRef} className={`w-52 top-12 right-0 bg-white ring-1 ring-black/5 shadow-xl rounded-lg shadow-black/5 absolute h-min duration-200
@@ -54,7 +54,7 @@ const Profile = () => {
             <p className='font-medium text-[12px]'>Restaurant Management</p>
           </li>
 
-          {/* <SignoutModal /> */}
+          <SignOutModal />
           
         </ul>
         </div>

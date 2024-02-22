@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import logo from '../../../assets/lofo.png'
 import {
   SignOut,
   User,
@@ -7,10 +8,17 @@ import {
   ListNumbers,
   House,
   CookingPot,
+  Envelope,
   Receipt,
+  Key,
+  UserFocus,
   Hamburger,
   CaretDown,
   ForkKnife,
+  Pizza,
+  Popcorn,
+  Martini,
+  Cookie,
 } from "phosphor-react";
 
 const Sidebar = () => {
@@ -18,7 +26,7 @@ const Sidebar = () => {
 
   const sidebars = [
     {
-      block: "",
+      block: "Home",
       icon: "",
       menus: [
         {
@@ -30,84 +38,76 @@ const Sidebar = () => {
       ],
     },
     {
-      block: "",
-      // block: "Orders",
+      block: "Managements",
       icon: "",
       menus: [
+        
         {
-          name: "Orders",
-          inActiveIcon: ListNumbers,
-          ActiveIcon: ListNumbers,
-          link: "/orders",
-          // subMenus: [
-          //   {
-          //     title: "Create Orders",
-          //     icon: Receipt,
-          //     link: "/orders/create",
-          //   },
-          // ],
+          name: "Categories",
+          inActiveIcon: ForkKnife,
+          ActiveIcon: ForkKnife,
+          // link: "/booking/checkins",
+          subMenus: [
+            {
+              title: "All Categories",
+              icon: 'null',
+              link: "/categories/allcategories",
+            },
+          ]
         },
-      ],
-    },
-    {
-      block: "",
-      // block: "Manage Menus",
-      icon: "",
-      menus: [
         {
-          name: "Cuisine",
-          inActiveIcon: CookingPot,
-          ActiveIcon: CookingPot,
-          link: "/cuisine",
+          name: "Menus",
+          inActiveIcon: Cookie,
+          ActiveIcon: Cookie,
+          link: "/booking/checkins",
+          subMenus: [
+            {
+              title: "All Menus",
+              icon: 'null',
+              link: "/menus/allmenus",
+            },
+          ]
         },
         {
           name: "Foods",
-          inActiveIcon: Hamburger,
-          ActiveIcon: Hamburger,
-          link: "/food",
+          inActiveIcon: Pizza,
+          ActiveIcon: Pizza,
+          link: "/foods/allfoods",
+          subMenus: [
+            {
+              title: "All Foods",
+              icon: 'null',
+              link: "/foods/allfoods",
+            },
+          ]
         },
+        
+      ],
+    },
+    {
+      block: "Account",
+      icon: "",
+      menus: [
         {
-          name: "Varieties",
-          inActiveIcon: ForkKnife,
-          ActiveIcon: ForkKnife,
-          link: "/varieties",
+          name: "Settings",
+          inActiveIcon: User,
+          ActiveIcon: User,
+          link: "/booking/checkins",
+          subMenus: [
+            {
+              title: "General",
+              icon: User,
+              link: "/account/general",
+            },
+            {
+              title: "Email",
+              icon: Envelope,
+              link: "/account/email",
+            },
+          ]
         },
       ],
     },
-    // {
-    //   block: "Account",
-    //   icon: "",
-    //   menus: [
-    //     {
-    //       name: "Hotel Account Settings",
-    //       inActiveIcon: User,
-    //       ActiveIcon: User,
-    //       link: "/booking/checkins",
-    //       subMenus: [
-    //         {
-    //           title: "General",
-    //           icon: User,
-    //           link: "/account/general",
-    //         },
-    //         {
-    //           title: "Email",
-    //           icon: Envelope,
-    //           link: "/account/termsandcondition",
-    //         },
-    //         {
-    //           title: "Security",
-    //           icon: Key,
-    //           link: "/account/security",
-    //         },
-    //         {
-    //           title: "Account Activity",
-    //           icon: UserFocus,
-    //           link: "/account/privacypolicy",
-    //         },
-    //       ]
-    //     },
-    //   ],
-    // },
   ];
 
   const navigate = useNavigate();
@@ -144,10 +144,9 @@ const Sidebar = () => {
     <>
       <aside className="w-[280px] shadow-gray-400/20 z-50 shadow-xl h-screen overflow-hidden overflow-y-auto flex flex-col justify-between scroll custom-scroll">
         <div className="space-y-4">
-          {/* <img src={cycLogo} className="scale-75 drop-shadow-xl" alt="" /> */}
-          <p className="px-6 py-4 font-black text-[17px] -tracking-[0px] capitalize">
-          Dundzo
-          </p>
+          <button className="p-4 focus:animate-keep-bounce flex items-center gap-1">
+            <img src={logo} className="w-12 h-12` drop-shadow-xl" alt="" />
+            </button>
           <ul>
             {sidebars.map((blocks, blockIdx) => (
               <li key={blockIdx} className="">
@@ -173,8 +172,8 @@ const Sidebar = () => {
                       className={`px-6 py-4 w-full cursor-pointer flex items-center justify-between gap-2
                       ${
                         !menus.subMenus && location.pathname.endsWith(menus.link)
-                          ? "bg-black/90 text-white"
-                          : "hover:bg-white text-gray-900 "
+                          ? "bg-orange-700/90 text-white"
+                          : "hover:bg-orange-700/10 hover:text-black  "
                       }
                       `}
                     >
@@ -210,8 +209,8 @@ const Sidebar = () => {
                               className={`w-full flex items-center cursor-pointer gap-2 pl-12  py-4
                ${
                  location.pathname.endsWith(submenus.link)
-                   ? "bg-black/90 text-white"
-                   : "hover:bg-black/90 hover:text-white text-gray-800"
+                   ? "bg-orange-700/90 text-white"
+                   : "hover:bg-orange-700/10 hover:text-black text-gray-800"
                }
                `}
                             >

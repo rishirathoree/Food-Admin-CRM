@@ -1,7 +1,7 @@
 import {Sequelize} from 'sequelize'
 
 // const sqlz = new Sequelize()
-const sequelize = new Sequelize('test', 'root', '', {
+const sequelize = new Sequelize('dappr', 'root', '', {
     host: 'localhost',
     dialect: 'mysql', // or any other dialect like 'postgres', 'sqlite', 'mssql'
   });

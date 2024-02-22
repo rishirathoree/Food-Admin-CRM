@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Trash, House } from "phosphor-react";
 import {Check,X} from 'phosphor-react'
-import DeleteModalComponent from "../../common/Modals/DeleteModal";
+// import DeleteModalComponent from "../../common/Modals/DeleteModal";
 const Table = () => {
 
     const generateRandomName = () => {
@@ -101,8 +101,8 @@ const Table = () => {
       </table>
     </div>
     </div>
-    <DeleteModalComponent onCancel={()=>{setDeleteReservationId(null)}} active={deleteReservationId}
-    />
+    {/* <DeleteModalComponent onCancel={()=>{setDeleteReservationId(null)}} active={deleteReservationId} */}
+    {/* /> */}
     </>
   )
 }

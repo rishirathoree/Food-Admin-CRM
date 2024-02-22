@@ -35,35 +35,6 @@ const FoodsTable = () => {
     // Indian
     "Curry", "Naan", "Biryani", "Samosa", "Tandoori Chicken",
     // French
-    "Croissant", "Bouillabaisse", "Ratatouille", "Crepes", "Quiche",
-    // Chinese
-    "Dim Sum", "Kung Pao Chicken", "Spring Rolls", "Dumplings", "Fried Rice",
-    // Thai
-    "Pad Thai", "Tom Yum Soup", "Green Curry", "Som Tum", "Massaman Curry",
-    // Mediterranean
-    "Hummus", "Falafel", "Tabbouleh", "Grilled Lamb", "Baklava",
-    // Greek
-    "Greek Salad", "Moussaka", "Souvlaki", "Spanakopita", "Tzatziki",
-    // American
-    "Burger", "Hotdog", "Fried Chicken", "Mac and Cheese", "BBQ Ribs",
-    // Spanish
-    "Paella", "Tapas", "Gazpacho", "Churros", "Patatas Bravas",
-    // Vietnamese
-    "Pho", "Banh Mi", "Spring Rolls", "Bun Cha", "Cao Lau",
-    // Korean
-    "Kimchi", "Bibimbap", "Korean BBQ", "Japchae", "Tteokbokki",
-    // Lebanese
-    "Shawarma", "Hummus", "Falafel", "Tabbouleh", "Baklava",
-    // Brazilian
-    "Feijoada", "Pão de Queijo", "Coxinha", "Moqueca", "Brigadeiro",
-    // Moroccan
-    "Couscous", "Tagine", "Briouats", "Harira", "Msemen",
-    // Turkish
-    "Kebab", "Baklava", "Meze", "Lahmacun", "Pide",
-    // Caribbean
-    "Jerk Chicken", "Ackee and Saltfish", "Roti", "Plantains", "Callaloo",
-    // Peruvian
-    "Ceviche"
   ]
 
   const ValuePicker = () => {
@@ -84,11 +55,10 @@ const FoodsTable = () => {
   const [DeleteModalId,setDeleteModalId] = useState(null)
   return (
     <>
-    <div className="m-4 pb-8 space-y-4">
-        <p className="font-medium text-[12px]">All Cuisines</p>
+    <div className="p-4 space-y-4">
         <div className=" rounded-lg border-gray-100 border-[1px] overflow-x-auto">
           <table className="border-collapse table-auto w-full text-sm">
-            <thead>
+            <thead className="">
               <tr className="">
                 <th className="font-semibold min-w-min py-4 px-4 text-[11px] text-left">
                   Sr.No

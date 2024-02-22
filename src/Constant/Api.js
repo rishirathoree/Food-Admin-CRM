@@ -1,18 +1,19 @@
 import axios from "axios";
 
-const baseURL = 'http://localhost:5000'
+const baseURL = 'http://192.168.1.38:5000'
 
 const instance = axios.create({
   baseURL,
 });
 
 const GetToken = () => {
-    return localStorage.getItem('token')
+  const token = localStorage.getItem('token')
+  return token
 }
 const Api = {
-  get: async (url, params, token = null ) => {
+  get: async (url, params, token = null) => {
     try {
-      const headers = token ? { 'Authorization': `Bearer ${token}` } : GetToken();
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : { 'Authorization': `Bearer ${GetToken()}` };
       const response = await instance.get(url, { params, headers });
       return response.data;
     } catch (error) {
@@ -21,7 +22,7 @@ const Api = {
   },
   post: async (url, data, params, token) => {
     try {
-      const headers = token ? { 'Authorization': `Bearer ${token}` } : GetToken();
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : { 'Authorization': `Bearer ${GetToken()}` };
       const response = await instance.post(url, data, { params, headers });
       return response.data;
     } catch (error) {

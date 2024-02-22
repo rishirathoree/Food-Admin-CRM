@@ -4,7 +4,6 @@ import { CloudArrowUp } from "phosphor-react";
 
  const DeleteModal = ({forModal,active,onClose}) => {
 
-  console.log(active)
   const [showModalX, setShowModalX] = useState(active);
 
   const onClickTwo = () => {

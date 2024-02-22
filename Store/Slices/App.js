@@ -8,7 +8,12 @@ const AppStatesSlice = createSlice({
     reducers:{
     //add
     ActiveModalToggle : (state,action)=>{
-        state.ActiveModal = action.payload
+        if(action.payload === state.ActiveModal){
+            state.ActiveModal = ''
+        }
+        else{
+            state.ActiveModal = action.payload
+        }
     }
     },
 })

@@ -1,28 +1,48 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../Middlewares/DatabaseConnection.js";
+import { DataTypes } from 'sequelize';
+import sequelize from '../Middlewares/DatabaseConnection.js';
 
-const Users = sequelize.define('Users',{
-    id:{
-        primaryKey:true,
-        type:DataTypes.STRING,
+const Users = sequelize.define('Users', {
+    id: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
+        allowNull: false,
     },
-    username:{
-        type:DataTypes.STRING,
-        allowNull:true,
-        unique:true,
+    username: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true,
+        validate: {
+            notEmpty: {
+                msg: 'Username Field Needed',
+            },
+        },
     },
-    email:{
-        type:DataTypes.STRING,
-        allowNull:true,
-        unique:true,
+    email: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true,
+        validate: {
+            notEmpty: {
+                msg: 'Email Field Needed',
+            },
+        },
     },
-    password:{
-        type:DataTypes.STRING,
-        allowNull:true,
-    }
-})
+    password: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+            notEmpty: {
+                msg: 'Password Field Needed',
+            },
+        },
+    },
+    role: {
+        type: DataTypes.ENUM('user', 'admin', 'superadmin'),
+        defaultValue: 'user',
+    },
+});
 
-Users.sync().then('User Sync').catch((err)=>{console.log('err user model',err)})
+
 
 export default Users;
