@@ -23,6 +23,7 @@ const Breadcrumbs = () => {
       {paths.map((item, idx) => {
         return (
           <span
+          key={idx}
             className={`text-gray-400 capitalize font-medium text-[10px] flex items-center gap-1 ${
               paths[paths.length - 1] === item ? "text-gray-700" : ""
             }`}

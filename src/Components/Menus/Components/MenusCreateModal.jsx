@@ -3,10 +3,17 @@ import pizzaImg from '../../../assets/pizza.jpg'
 import {X} from 'phosphor-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ActiveModalToggle } from '../../../../Store/Slices/App'
+import Select from 'react-select'
 const MenusCreateModal = () => {
 
     const dispatch = useDispatch()
     const ModalState = useSelector(state=>state.App.ActiveModal)
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ]
+
   return (
     <div>
         <button onClick={()=>{dispatch(ActiveModalToggle('createmenu'))}} type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-xs px-5 py-2">Create Menus</button>
@@ -27,10 +34,18 @@ const MenusCreateModal = () => {
                     <img src={pizzaImg} className='w-full h-full object-cover' alt="" />
                 </span>
                 
-                <div className='p-8 flex flex-col space-y-2'>
+                <span className='p-8 space-y-4 block'>
+                <div className='flex flex-col space-y-2'>
+                    <label htmlFor="createmenu" className='text-[12px] font-medium'>Categories Names</label>
+                    <Select options={options} className='font-medium duration-500 placeholder:text-xs text-xs' isMulti placeholder='Select Categories Names' />
+                </div>
+
+                
+                <div className='flex flex-col space-y-2'>
                     <label htmlFor="createmenu" className='text-[12px] font-medium'>Menu Names</label>
                     <input type="text" className='outline-none focus:outline-none ring-1 ring-black/10 focus:ring-black/20 duration-200 p-3 rounded-lg text-xs' placeholder='Enter Menu Name' />
                 </div>
+                </span>
 
                 <span className='p-4 bg-white border-t-[1px] border-slate-200 w-full flex items-center gap-2'>
                 <button type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-xs px-5 py-2.5">Create</button>

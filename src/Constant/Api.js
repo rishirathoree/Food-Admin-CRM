@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const baseURL = 'http://192.168.1.38:5000'
+const baseURL = `http://${import.meta.env.VITE_IP_ADDRESS}:5000`
 
 const instance = axios.create({
   baseURL,
@@ -10,6 +9,7 @@ const GetToken = () => {
   const token = localStorage.getItem('token')
   return token
 }
+
 const Api = {
   get: async (url, params, token = null) => {
     try {

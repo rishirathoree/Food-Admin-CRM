@@ -7,7 +7,7 @@ const App = () => {
   const isLogin = useSelector(state=>state.Auth.Auth.data)
   const navigate = useNavigate()
 
-  useEffect(()=>{if(!isLogin){navigate('/login')}},[isLogin,navigate])
+  useEffect(()=>{if(!isLogin){navigate('/login')}},[navigate])
 
   const routes = useRoutes([
     { path: "/login", element: <LoginPage /> },

@@ -44,7 +44,7 @@ const CategoriesTable = ({ Categories }) => {
               <tbody className="bg-white">
                 {CategoriesList.map((item, index) => (
                   <tr
-                    key={index}
+                    key={item.id}
                     className="border-y-[1px] last:border-y-0 border-slate-200"
                   >
                     <td className="font-medium py-4 min-w-min text-left max-w-max p-4 text-[12px] ">

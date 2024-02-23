@@ -3,10 +3,13 @@ import pizzaImg from '../../../assets/pizza.jpg'
 import {X} from 'phosphor-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ActiveModalToggle } from '../../../../Store/Slices/App'
+
 const CreateFoodModal = () => {
 
     const dispatch = useDispatch()
+    
     const ModalState = useSelector(state=>state.App.ActiveModal)
+
   return (
     <div>
         <button onClick={()=>{dispatch(ActiveModalToggle('createfood'))}} type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-xs px-5 py-2">Create Foods</button>
@@ -26,7 +29,11 @@ const CreateFoodModal = () => {
                     <div className='w-full h-full absolute top-0 left-0 bg-gradient-to-b from-black/10 to-white'></div>
                     <img src={pizzaImg} className='w-full h-full object-cover' alt="" />
                 </span>
-                
+
+                <div className='p-8 flex flex-col space-y-2'>
+                    <label htmlFor="createfood" className='text-[12px] font-semibold'>Enter Food Name</label>
+                </div>
+
                 <div className='p-8 flex flex-col space-y-2'>
                     <label htmlFor="createfood" className='text-[12px] font-semibold'>Enter Food Name</label>
                     <input type="text" className='outline-none focus:outline-none ring-1 ring-black/10 focus:ring-black/20 duration-200 p-3 rounded-lg text-xs' placeholder='Enter Food Name' />

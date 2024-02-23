@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import pizzaImg from '../../../assets/pizza.jpg'
-import {X} from 'phosphor-react'
+import {X,CircleNotch} from 'phosphor-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ActiveModalToggle } from '../../../../Store/Slices/App'
-import { CreateCatgeories } from '../../../../Store/Slices/Categories'
+import { AddCategoriesToContext, ClearCreateCategoryContext, CreateCatgeories } from '../../../../Store/Slices/Categories'
 const CategoriesCreateModal = () => {
 
     const dispatch = useDispatch()
@@ -52,10 +52,28 @@ const CategoriesCreateModal = () => {
             forms.append(key,value)
         }
       dispatch(CreateCatgeories(Category))
-
     }
   }
 
+  const CategoriesCreateContext = useSelector(state=>state.Categories.CreateCategory)
+
+  const {error,pending,data} = CategoriesCreateContext
+
+  useEffect(()=>{
+    if(data){
+      setCategory({name:''})
+      dispatch(AddCategoriesToContext(data))
+      dispatch(ActiveModalToggle(''))
+    }
+  },[data])
+
+  useEffect(()=>{
+    if(error){
+      setTimeout(() => {
+        dispatch(ClearCreateCategoryContext())
+      }, 5000);
+    }
+  },[error])
 
   return (
     <div>
@@ -81,12 +99,22 @@ const CategoriesCreateModal = () => {
                     <label htmlFor="createcat" className='text-[12px] font-semibold'>Create Categories</label>
                     <input type="text" value={Category.name} name='name' onChange={handleChange} className='outline-none focus:outline-none ring-1 ring-black/10 focus:ring-black/20 duration-200 p-3 rounded-lg text-xs' placeholder='Enter Catetgory Name' />
                     {errorMessage.includes('name') && <p className='text-xs font-semibold text-red-500'>Please fill the required fields.</p>}
-            {/* {error && error.msg === 'Invalid Email' && <p className='text-xs font-semibold text-red-500'>Please enter the valid email.</p>} */}
+                    {error && error.error && error.error.errors.find((item,idx)=>{return item.message === 'name must be unique'}) && <p className='text-xs font-semibold text-red-500'>Categories Already Exist.</p>}
                 </div>
 
                 <span className='p-4 bg-white border-t-[1px] border-slate-200 w-full flex items-center gap-2'>
-                <button onClick={handleSubmit} type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-xs px-5 py-2.5">Create</button>
-                <button onClick={()=>{dispatch(ActiveModalToggle('createcat'))}} type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-5 py-2.5">Cancel</button>
+                
+                <button onClick={handleSubmit} type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-xs px-5 py-2.5">
+                {pending && <CircleNotch size={15} weight='duotone' className='text-slate-500 animate-spin' />}
+                {!pending && 'Create'}
+                </button>
+
+                <button onClick={()=>{
+                  setCategory({name:''})
+                  dispatch(ActiveModalToggle('createcat'))
+                }} type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-5 py-2.5">
+                Cancel
+                </button>
 
                 </span>
 

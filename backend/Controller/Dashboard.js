@@ -1,4 +1,5 @@
 export const GetDashboard = (req, res) => {
+  console.log('===============>>>>>>>>>>')
   const dashboardData = {
     Orders: {
       category: "Total Bookings",
@@ -25,6 +26,7 @@ export const GetDashboard = (req, res) => {
       }
     },
   }
+  
   return res.json({ msg: 'Successfully got the data', dashboardData })
 
 }

@@ -46,7 +46,7 @@ export const Login = async (req, res) => {
 
 export const TokenChecker = (req, res, next) => {
 
-    console.log(req.headers)
+    // console.log(req.headers)
 
     if (!req.headers.authorization) {
         return res.status(401).json({ msg: 'token required' })

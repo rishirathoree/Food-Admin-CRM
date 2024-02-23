@@ -34,7 +34,7 @@ const AuthenticationSlice = createSlice({
             state.Auth.pending = false
             state.Auth.error = null
             state.Auth.data = null
-        }
+        },
     },
     extraReducers: (builder) => {
         builder

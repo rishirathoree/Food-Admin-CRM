@@ -8,10 +8,10 @@ const TableLoadingShimmer = ({row,innerBoxs}) => {
         <ul className='space-y-4'>
             {Array(rows).fill(1).map((item,idx)=>{
                 return(
-                    <li className='animate-pulse rounded-lg bg-gray-50 grid grid-cols-4 gap-4'>
+                    <li key={idx} className='animate-pulse rounded-lg bg-gray-50 grid grid-cols-4 gap-4'>
                         {Array(innerBox).fill(1).map((item,idx)=>{
                             return(
-                                <span className='p-5 rounded-md bg-slate-200'></span>
+                                <span key={idx} className='p-5 rounded-md bg-slate-200'></span>
                             )
                         })}
                     </li>

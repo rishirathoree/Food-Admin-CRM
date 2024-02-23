@@ -41,7 +41,7 @@ const Sidebar = () => {
       block: "Managements",
       icon: "",
       menus: [
-        
+
         {
           name: "Categories",
           inActiveIcon: ForkKnife,
@@ -81,7 +81,7 @@ const Sidebar = () => {
             },
           ]
         },
-        
+
       ],
     },
     {
@@ -120,8 +120,8 @@ const Sidebar = () => {
       block.menus.some((menu, menuIdx) =>
         menu.subMenus
           ? menu.subMenus.some((subMenu) =>
-              location.pathname.endsWith(subMenu.link)
-            )
+            location.pathname.endsWith(subMenu.link)
+          )
           : false
       )
     );
@@ -130,8 +130,8 @@ const Sidebar = () => {
       const foundMenuIdx = foundMenu.menus.findIndex((menu) =>
         menu.subMenus
           ? menu.subMenus.some((subMenu) =>
-              location.pathname.endsWith(subMenu.link)
-            )
+            location.pathname.endsWith(subMenu.link)
+          )
           : false
       );
       setActiveDropDown(`${blockIdx}-${foundMenuIdx}`);
@@ -146,7 +146,7 @@ const Sidebar = () => {
         <div className="space-y-4">
           <button className="p-4 focus:animate-keep-bounce flex items-center gap-1">
             <img src={logo} className="w-12 h-12` drop-shadow-xl" alt="" />
-            </button>
+          </button>
           <ul>
             {sidebars.map((blocks, blockIdx) => (
               <li key={blockIdx} className="">
@@ -170,11 +170,10 @@ const Sidebar = () => {
                         }
                       }}
                       className={`px-6 py-4 w-full cursor-pointer flex items-center justify-between gap-2
-                      ${
-                        !menus.subMenus && location.pathname.endsWith(menus.link)
+                      ${!menus.subMenus && location.pathname.endsWith(menus.link)
                           ? "bg-orange-700/90 text-white"
                           : "hover:bg-orange-700/10 hover:text-black  "
-                      }
+                        }
                       `}
                     >
                       <span className="flex items-center gap-2">
@@ -187,34 +186,27 @@ const Sidebar = () => {
                       </span>
                       {menus.subMenus && (
                         <CaretDown
-                          className={`bx bx-chevron-up duration-700 ${
-                            activeDropdown === `${blockIdx}-${menuIdx}`
+                          className={`bx bx-chevron-up duration-700 ${activeDropdown === `${blockIdx}-${menuIdx}`
                               ? "rotate-180"
                               : ""
-                          }`}
+                            }`}
                         />
                       )}
                     </div>
                     <div
-                      className={`overflow-hidden  ${
-                        activeDropdown === `${blockIdx}-${menuIdx}`
+                      className={`overflow-hidden  ${activeDropdown === `${blockIdx}-${menuIdx}`
                           ? "max-h-[400px] visible opacity-100 duration-1000 "
                           : "duration-200 max-h-0 invisible opacity-0"
-                      }`}
+                        }`}
                     >
                       {menus.subMenus &&
                         menus.subMenus.map((submenus, submenuIdx) => (
                           <Link to={submenus.link} key={submenuIdx}>
                             <span
                               className={`w-full flex items-center cursor-pointer gap-2 pl-12  py-4
-               ${
-                 location.pathname.endsWith(submenus.link)
-                   ? "bg-orange-700/90 text-white"
-                   : "hover:bg-orange-700/10 hover:text-black text-gray-800"
-               }
-               `}
+                                  ${location.pathname.endsWith(submenus.link)  ? "bg-orange-700/90 text-white"  : "hover:bg-orange-700/10 hover:text-black text-gray-800"}`}
                             >
-                              <submenus.icon weight={"thin"} size={20} />
+                              {/* <submenus.icon weight={"thin"} size={20} /> */}
                               <p className=" tracking-normal text-[10px] font-medium">
                                 {submenus.title}
                               </p>
